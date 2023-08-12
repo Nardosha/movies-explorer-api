@@ -1,54 +1,71 @@
-//country — страна создания фильма. Обязательное поле-строка.
-// director — режиссёр фильма. Обязательное поле-строка.
-// duration — длительность фильма. Обязательное поле-число.
-// year — год выпуска фильма. Обязательное поле-строка.
-// description — описание фильма. Обязательное поле-строка.
-// image — ссылка на постер к фильму. Обязательное поле-строка. Запишите её URL-адресом.
-// trailerLink — ссылка на трейлер фильма. Обязательное поле-строка. Запишите её URL-адресом.
-// thumbnail — миниатюрное изображение постера к фильму. Обязательное поле-строка. Запишите её URL-адресом.
-// owner — _id пользователя, который сохранил фильм. Обязательное поле.
-// movieId — id фильма, который содержится в ответе сервиса MoviesExplorer. Обязательное поле в формате number.
-// nameRU — название фильма на русском языке. Обязательное поле-строка.
-// nameEN — название фильма на английском языке. Обязательное поле-строка.
+import mongoose from 'mongoose';
+import isURL from 'validator/es/lib/isURL.js';
+import { INVALID_URL_ERR_TEXT } from '../constants.js';
 
-import mongoose from "mongoose";
-
-const movie = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
   country: {
-    type: String
+    type: String,
+    required: true,
   },
   director: {
-    type: String
+    type: String,
+    required: true,
   },
   duration: {
-    type: String
+    type: Number,
+    required: true,
   },
   year: {
-    type: String
+    type: String,
+    required: true,
   },
   description: {
-    type: String
+    type: String,
+    required: true,
   },
   image: {
-    type: String
+    type: String,
+    required: true,
+    validate: {
+      validator: (url) => isURL(url),
+      message: INVALID_URL_ERR_TEXT,
+    },
   },
   trailerLink: {
-    type: String
+    type: String,
+    required: true,
+    validate: {
+      validator: (url) => isURL(url),
+      message: INVALID_URL_ERR_TEXT,
+    },
   },
   thumbnail: {
-    type: String
+    type: String,
+    required: true,
+    validate: {
+      validator: (url) => isURL(url),
+      message: INVALID_URL_ERR_TEXT,
+    },
   },
   owner: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
   },
   movieId: {
-    type: String
+    type: Number,
+    required: true,
   },
   nameRU: {
-    type: String
+    type: String,
+    required: true,
   },
   nameEN: {
-    type: String
+    type: String,
+    required: true,
   },
-})
+});
 
+const Movie = mongoose.model('movie', movieSchema);
+
+export default Movie;
