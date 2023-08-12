@@ -1,0 +1,18 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Бэкенд учебного проекто Movies explorer.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
