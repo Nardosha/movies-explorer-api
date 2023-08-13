@@ -70,3 +70,27 @@ export const getUserInfo = async (req, res, next) => {
     next(err);
   }
 };
+
+export const updateUserInfo = async (req, res, next) => {
+  try {
+    const { _id } = req.user;
+    const userInfo = req.body;
+
+    const user = await User.findByIdAndUpdate(_id, userInfo, {
+      new: true,
+      upsert: true,
+      runValidators: true,
+    });
+
+    const newUser = { id: user._id, name: user.name, email: user.email };
+
+    res.send({ data: newUser });
+  } catch (err) {
+    if (err.code === 11000) {
+      next(new IntersectionError(INTERSECTION_ERROR_TEXT));
+      return;
+    }
+
+    next(err);
+  }
+};
