@@ -94,3 +94,12 @@ export const updateUserInfo = async (req, res, next) => {
     next(err);
   }
 };
+
+export const logout = async (req, res, next) => {
+  try {
+    res.clearCookie();
+    res.send({ data: 'Польщователь успешно разлогинен!' });
+  } catch (err) {
+    next(err);
+  }
+};

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import isURL from 'validator/es/lib/isURL.js';
+import isURL from 'validator/lib/isURL.js';
 import { INVALID_URL_ERR_TEXT } from '../constants.js';
 
 const movieSchema = new mongoose.Schema({
