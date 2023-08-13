@@ -10,14 +10,14 @@ export const MAX_LENGTH_ERROR_TEXT = 'Максиму 30 символа';
 export const NOT_FOUND_ERROR_CODE = 404;
 export const NOT_FOUND_PAGE_ERROR_TEXT = 'Запрашиваемая страница не найдена';
 export const NOT_FOUND_USER_ERROR_TEXT = 'Пользователь не найден';
-export const NOT_FOUND_CARD_ERROR_TEXT = 'Фильм не найден';
+export const NOT_FOUND_MOVIE_ERROR_TEXT = 'Фильм не найден';
 
 export const UNAUTHORIZED_ERROR_CODE = 401;
 export const UNAUTHORIZED_ERROR_TEXT = 'Необходимо авторизоваться';
 export const INVALID_AUTH_DATA_ERROR_TEXT = 'Неправильная почта или пароль';
 
 export const FORBIDDEN_ERROR_CODE = 403;
-export const DELETE_MOVIE_FORBIDDEN_ERROR_TEXT = 'Невозожно удалить чужую карточку.';
+export const DELETE_MOVIE_FORBIDDEN_ERROR_TEXT = 'Невозожно удалить чужой фильм';
 
 export const INTERSECTION_ERROR_CODE = 409;
 export const INTERSECTION_ERROR_TEXT = 'Пользователь с таким email уже зарегестрирован';
