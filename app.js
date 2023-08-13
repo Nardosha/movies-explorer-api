@@ -11,6 +11,7 @@ import { PORT, DB_CONNECTION } from './config.js';
 import { NOT_FOUND_PAGE_ERROR_TEXT } from './constants.js';
 import { validateSignin, validateSignup } from './utils/validators.js';
 import { errors } from 'celebrate';
+import { errorLogger, requestLogger } from './moddlewares/logger.js';
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 mongoose.connect(DB_CONNECTION);
-
+app.use(requestLogger);
 app.use('/signup', validateSignup, signup);
 app.use('/signin', validateSignin, signin);
 app.use('/users', userRouter);
@@ -29,6 +30,8 @@ app.use('*', (req, res, next) => {
 });
 
 app.use(errors());
+
+app.use(errorLogger);
 
 app.use(errorHandler);
 
