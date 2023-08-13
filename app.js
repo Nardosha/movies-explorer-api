@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import { signup } from './controllers/userControllers.js';
+import { signin, signup } from './controllers/userControllers.js';
 import { errorHandler } from './moddlewares/errorHandler.js';
 import { NotFoundError } from './errors/NotFoundError.js';
 import userRouter from './routes/userRoutes.js';
@@ -15,10 +15,11 @@ app.use(bodyParser.json());
 mongoose.connect(DB_CONNECTION);
 
 app.use('/signup', signup);
+app.use('/signin', signin);
 app.use('/users', userRouter);
 
-app.use('/*', (err, req, res, next) => {
-  res.send(new NotFoundError(NOT_FOUND_PAGE_ERROR_TEXT));
+app.use('*',(req, res, next) => {
+  next(new NotFoundError(NOT_FOUND_PAGE_ERROR_TEXT));
 });
 app.use(errorHandler);
 

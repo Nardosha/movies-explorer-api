@@ -1,10 +1,14 @@
 import mongoose from 'mongoose';
-import isEmail from 'validator/es/lib/isEmail.js';
+import bcrypt from 'bcryptjs';
+import isEmail from 'validator/lib/isEmail.js';
+
 import {
+  INVALID_AUTH_DATA_ERROR_TEXT,
   INVALID_EMAIL_ERR_TEXT,
   REQUIRED_EMAIL_ERR_TEXT,
   REQUIRED_PASSWORD_ERR_TEXT,
 } from '../constants.js';
+import { UnauthorizedError } from '../errors/UnauthorizedError.js';
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -27,9 +31,24 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, REQUIRED_PASSWORD_ERR_TEXT],
     select: false,
-
   },
 });
+
+userSchema.statics.findByCredentials = async function ({ email, password }) {
+  const user = await this.findOne({ email }).select('+password');
+
+  if (!user) {
+    throw new UnauthorizedError(INVALID_AUTH_DATA_ERROR_TEXT);
+  }
+
+  const isMatchedPassword = await bcrypt.compare(password, user.password);
+
+  if (!isMatchedPassword) {
+    throw new UnauthorizedError(INVALID_AUTH_DATA_ERROR_TEXT);
+  }
+
+  return user;
+};
 
 const User = mongoose.model('user', userSchema);
 
