@@ -20,7 +20,7 @@ export const FORBIDDEN_ERROR_CODE = 403;
 export const DELETE_MOVIE_FORBIDDEN_ERROR_TEXT = 'Невозожно удалить чужую карточку.';
 
 export const INTERSECTION_ERROR_CODE = 409;
-export const INTERSECTION_ERROR_TEXT = 'Такой пользователь уже зарегестрирован';
+export const INTERSECTION_ERROR_TEXT = 'Пользователь с таким email уже зарегестрирован';
 
 export const INTERNAL_SERVER_ERROR_CODE = 500;
 export const INTERNAL_SERVER_ERROR_TEXT = 'На сервере произошла ошибка';

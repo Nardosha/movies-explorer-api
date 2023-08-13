@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import { signin, signup } from './controllers/userControllers.js';
 import { errorHandler } from './moddlewares/errorHandler.js';
 import { NotFoundError } from './errors/NotFoundError.js';
@@ -11,6 +12,7 @@ import { NOT_FOUND_PAGE_ERROR_TEXT } from './constants.js';
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser())
 
 mongoose.connect(DB_CONNECTION);
 
