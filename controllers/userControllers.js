@@ -4,10 +4,13 @@ import { IntersectionError } from '../errors/IntersectionError.js';
 import {
   INTERSECTION_ERROR_TEXT,
   INVALID_AUTH_DATA_ERROR_TEXT,
+  NOT_FOUND_ERROR_CODE,
+  NOT_FOUND_USER_ERROR_TEXT,
 } from '../constants.js';
 import { UnauthorizedError } from '../errors/UnauthorizedError.js';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '../config.js';
+import { NotFoundError } from '../errors/NotFoundError.js';
 
 export const signup = async (req, res, next) => {
   try {
@@ -43,7 +46,6 @@ export const signin = async (req, res, next) => {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
       sameSite: true,
-      secure: true,
     });
 
     const loggedUser = { token, id: user._id, email, name: user.name };
@@ -54,6 +56,17 @@ export const signin = async (req, res, next) => {
   }
 };
 
-export const getUserInfo = (req, res, next) => {
-  res.send('kek');
+export const getUserInfo = async (req, res, next) => {
+  try {
+    const { _id } = req.user;
+
+    const user = await User.findById(_id);
+
+    if (!user) {
+      return new NotFoundError(NOT_FOUND_USER_ERROR_TEXT);
+    }
+    res.send({ data: user });
+  } catch (err) {
+    next(err);
+  }
 };
