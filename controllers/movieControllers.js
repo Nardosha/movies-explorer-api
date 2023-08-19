@@ -34,7 +34,7 @@ export const deleteMovie = async (req, res, next) => {
     const isOwner = movie.owner.toString() === userId;
 
     if (!isOwner) {
-      next(new ForbiddenError(DELETE_MOVIE_FORBIDDEN_ERROR_TEXT));
+      return next(new ForbiddenError(DELETE_MOVIE_FORBIDDEN_ERROR_TEXT));
     }
 
     const deletedMovie = await Movie.findByIdAndDelete(movie._id);
@@ -48,7 +48,7 @@ export const deleteMovie = async (req, res, next) => {
 export const getMovies = async (req, res, next) => {
   try {
     const { _id: owner } = req.user;
-    console.log(owner);
+
     const movies = await Movie.find({ owner });
 
     res.send({ data: movies });
