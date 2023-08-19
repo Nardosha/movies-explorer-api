@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
-import isEmail from 'validator/lib/isEmail';
+import isEmail from 'validator/lib/isEmail.js';
 
 import {
   INVALID_AUTH_DATA_ERROR_TEXT,
   INVALID_EMAIL_ERR_TEXT,
   REQUIRED_EMAIL_ERR_TEXT,
   REQUIRED_PASSWORD_ERR_TEXT,
-} from '../utils/constants';
-import { UnauthorizedError } from '../errors/UnauthorizedError';
+} from '../utils/constants.js';
+import { UnauthorizedError } from '../errors/UnauthorizedError.js';
 
 const userSchema = new mongoose.Schema({
   name: {

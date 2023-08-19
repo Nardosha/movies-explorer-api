@@ -1,7 +1,7 @@
 import {
   INTERNAL_SERVER_ERROR_CODE,
   INTERNAL_SERVER_ERROR_TEXT,
-} from '../utils/constants';
+} from '../utils/constants.js';
 
 export const errorHandler = (err, req, res, next) => {
   const statusCode = err.statusCode || INTERNAL_SERVER_ERROR_CODE;

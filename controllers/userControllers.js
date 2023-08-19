@@ -1,13 +1,13 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/user';
-import { IntersectionError } from '../errors/IntersectionError';
+import User from '../models/user.js';
+import { IntersectionError } from '../errors/IntersectionError.js';
 import {
   INTERSECTION_ERROR_TEXT,
   NOT_FOUND_USER_ERROR_TEXT,
-} from '../utils/constants';
-import { JWT_SECRET } from '../config';
-import { NotFoundError } from '../errors/NotFoundError';
+} from '../utils/constants.js';
+import { JWT_SECRET } from '../config.js';
+import { NotFoundError } from '../errors/NotFoundError.js';
 
 export const signup = async (req, res, next) => {
   try {

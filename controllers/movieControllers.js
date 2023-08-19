@@ -1,10 +1,10 @@
-import Movie from '../models/movie';
+import Movie from '../models/movie.js';
 import {
   DELETE_MOVIE_FORBIDDEN_ERROR_TEXT,
   NOT_FOUND_MOVIE_ERROR_TEXT,
-} from '../utils/constants';
-import { NotFoundError } from '../errors/NotFoundError';
-import { ForbiddenError } from '../errors/ForbiddenError';
+} from '../utils/constants.js';
+import { NotFoundError } from '../errors/NotFoundError.js';
+import { ForbiddenError } from '../errors/ForbiddenError.js';
 
 export const createMovie = async (req, res, next) => {
   try {
@@ -47,7 +47,9 @@ export const deleteMovie = async (req, res, next) => {
 
 export const getMovies = async (req, res, next) => {
   try {
-    const movies = await Movie.find({});
+    const { _id: owner } = req.user;
+    console.log(owner);
+    const movies = await Movie.find({ owner });
 
     res.send({ data: movies });
   } catch (err) {

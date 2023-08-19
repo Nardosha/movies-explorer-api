@@ -1,7 +1,7 @@
 import express from 'express';
-import { getUserInfo, logout, updateUserInfo } from '../controllers/userControllers';
-import { auth } from '../moddlewares/auth';
-import { validateUserData } from '../utils/validators';
+import { getUserInfo, logout, updateUserInfo } from '../controllers/userControllers.js';
+import { auth } from '../moddlewares/auth.js';
+import { validateUserData } from '../utils/validators.js';
 
 const userRouter = express.Router();
 

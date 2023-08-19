@@ -28,5 +28,10 @@ module.exports = {
     'import/prefer-default-export': 0,
     'consistent-return': 1,
     'func-names': 0,
+    'import/named': 'warn',
+    'import/extensions': 0,
+    quotes: [1, 'single', { avoidEscape: true }],
+    'object-curly-newline': 0,
+    'object-curly-spacing': 1,
   },
 };
