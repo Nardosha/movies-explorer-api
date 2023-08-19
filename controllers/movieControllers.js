@@ -32,7 +32,7 @@ export const deleteMovie = async (req, res, next) => {
     const { id: movieId } = req.params;
     const { _id: userId } = req.user;
 
-    const movie = await Movie.findOne({ movieId });
+    const movie = await Movie.findOne({ _id: movieId });
 
     if (!movie) {
       next(new NotFoundError(NOT_FOUND_MOVIE_ERROR_TEXT));

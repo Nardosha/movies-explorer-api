@@ -15,7 +15,6 @@ export const auth = async (req, res, next) => {
     req.user = await jwt.verify(token, JWT_SECRET);
     next();
   } catch (err) {
-    console.log(err);
     next(err);
   }
 };
