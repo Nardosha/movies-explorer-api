@@ -5,6 +5,7 @@ import {
 } from '../utils/constants.js';
 import { NotFoundError } from '../errors/NotFoundError.js';
 import { ForbiddenError } from '../errors/ForbiddenError.js';
+import { BadRequestError } from '../errors/BadRequestError.js';
 
 export const createMovie = async (req, res, next) => {
   try {
@@ -16,6 +17,12 @@ export const createMovie = async (req, res, next) => {
 
     res.status(201).send({ data: movie });
   } catch (err) {
+    if (err.name === 'ValidationError') {
+      const errorMessage = Object.values(err.errors).map(error => error.message).join(', ')
+      next(new BadRequestError(errorMessage));
+      return;
+    }
+
     next(err);
   }
 };

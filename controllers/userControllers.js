@@ -8,6 +8,7 @@ import {
 } from '../utils/constants.js';
 import { JWT_SECRET } from '../config.js';
 import { NotFoundError } from '../errors/NotFoundError.js';
+import { BadRequestError } from '../errors/BadRequestError.js';
 
 export const signup = async (req, res, next) => {
   try {
@@ -23,6 +24,12 @@ export const signup = async (req, res, next) => {
   } catch (err) {
     if (err.code === 11000) {
       next(new IntersectionError(INTERSECTION_ERROR_TEXT));
+      return;
+    }
+
+    if (err.name === 'ValidationError') {
+      const errorMessage = Object.values(err.errors).map(error => error.message).join(', ')
+      next(new BadRequestError(errorMessage));
       return;
     }
 
@@ -87,6 +94,12 @@ export const updateUserInfo = async (req, res, next) => {
   } catch (err) {
     if (err.code === 11000) {
       next(new IntersectionError(INTERSECTION_ERROR_TEXT));
+      return;
+    }
+
+    if (err.name === 'ValidationError') {
+      const errorMessage = Object.values(err.errors).map(error => error.message).join(', ')
+      next(new BadRequestError(errorMessage));
       return;
     }
 
