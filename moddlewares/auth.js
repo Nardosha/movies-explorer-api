@@ -1,5 +1,5 @@
-import { JWT_SECRET } from '../config.js';
 import jwt from 'jsonwebtoken';
+import { JWT_SECRET } from '../config';
 
 export const auth = async (req, res, next) => {
   try {
@@ -8,7 +8,6 @@ export const auth = async (req, res, next) => {
     req.user = await jwt.verify(token, JWT_SECRET);
     next();
   } catch (err) {
-
     console.log(err);
     next(err);
   }

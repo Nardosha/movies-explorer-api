@@ -1,10 +1,10 @@
-import Movie from '../models/movie.js';
+import Movie from '../models/movie';
 import {
   DELETE_MOVIE_FORBIDDEN_ERROR_TEXT,
   NOT_FOUND_MOVIE_ERROR_TEXT,
-} from '../constants.js';
-import { NotFoundError } from '../errors/NotFoundError.js';
-import { ForbiddenError } from '../errors/ForbiddenError.js';
+} from '../utils/constants';
+import { NotFoundError } from '../errors/NotFoundError';
+import { ForbiddenError } from '../errors/ForbiddenError';
 
 export const createMovie = async (req, res, next) => {
   try {
@@ -25,7 +25,7 @@ export const deleteMovie = async (req, res, next) => {
     const { id: movieId } = req.params;
     const { _id: userId } = req.user;
 
-    const movie = await Movie.findOne({ movieId: movieId });
+    const movie = await Movie.findOne({ movieId });
 
     if (!movie) {
       next(new NotFoundError(NOT_FOUND_MOVIE_ERROR_TEXT));

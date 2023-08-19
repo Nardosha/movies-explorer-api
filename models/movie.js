@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import isURL from 'validator/lib/isURL.js';
-import { INVALID_URL_ERR_TEXT } from '../constants.js';
+import isURL from 'validator/lib/isURL';
+import { INVALID_URL_ERR_TEXT } from '../utils/constants';
 
 const movieSchema = new mongoose.Schema({
   country: {

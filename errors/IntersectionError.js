@@ -1,4 +1,4 @@
-import { INTERSECTION_ERROR_CODE } from '../constants.js';
+import { INTERSECTION_ERROR_CODE } from '../utils/constants';
 
 export class IntersectionError extends Error {
   constructor(errorMessage) {

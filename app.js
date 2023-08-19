@@ -2,16 +2,16 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import { signin, signup } from './controllers/userControllers.js';
-import { errorHandler } from './moddlewares/errorHandler.js';
-import { NotFoundError } from './errors/NotFoundError.js';
-import userRouter from './routes/userRoutes.js';
-import movieRouter from './routes/movieRoutes.js';
-import { PORT, DB_CONNECTION } from './config.js';
-import { NOT_FOUND_PAGE_ERROR_TEXT } from './constants.js';
-import { validateSignin, validateSignup } from './utils/validators.js';
 import { errors } from 'celebrate';
-import { errorLogger, requestLogger } from './moddlewares/logger.js';
+import { signin, signup } from './controllers/userControllers';
+import { errorHandler } from './moddlewares/errorHandler';
+import { NotFoundError } from './errors/NotFoundError';
+import userRouter from './routes/userRoutes';
+import movieRouter from './routes/movieRoutes';
+import { PORT, DB_CONNECTION } from './config';
+import { NOT_FOUND_PAGE_ERROR_TEXT } from './utils/constants';
+import { validateSignin, validateSignup } from './utils/validators';
+import { errorLogger, requestLogger } from './moddlewares/logger';
 
 const app = express();
 

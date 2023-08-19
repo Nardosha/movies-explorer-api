@@ -1,4 +1,4 @@
-import { FORBIDDEN_ERROR_CODE } from '../constants.js';
+import { FORBIDDEN_ERROR_CODE } from '../utils/constants';
 
 export class ForbiddenError extends Error {
   constructor(errorMessage) {

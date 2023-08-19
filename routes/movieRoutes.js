@@ -1,6 +1,6 @@
 import express from 'express';
-import { auth } from '../moddlewares/auth.js';
-import { createMovie, deleteMovie, getMovies } from '../controllers/movieControllers.js';
+import { auth } from '../moddlewares/auth';
+import { createMovie, deleteMovie, getMovies } from '../controllers/movieControllers';
 
 const movieRouter = express.Router();
 

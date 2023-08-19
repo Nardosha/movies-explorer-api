@@ -1,4 +1,4 @@
-import { UNAUTHORIZED_ERROR_CODE } from '../constants.js';
+import { UNAUTHORIZED_ERROR_CODE } from '../utils/constants';
 
 export class UnauthorizedError extends Error {
   constructor(errorMessage) {

@@ -1,16 +1,13 @@
-import User from '../models/user.js';
 import bcrypt from 'bcryptjs';
-import { IntersectionError } from '../errors/IntersectionError.js';
+import jwt from 'jsonwebtoken';
+import User from '../models/user';
+import { IntersectionError } from '../errors/IntersectionError';
 import {
   INTERSECTION_ERROR_TEXT,
-  INVALID_AUTH_DATA_ERROR_TEXT,
-  NOT_FOUND_ERROR_CODE,
   NOT_FOUND_USER_ERROR_TEXT,
-} from '../constants.js';
-import { UnauthorizedError } from '../errors/UnauthorizedError.js';
-import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config.js';
-import { NotFoundError } from '../errors/NotFoundError.js';
+} from '../utils/constants';
+import { JWT_SECRET } from '../config';
+import { NotFoundError } from '../errors/NotFoundError';
 
 export const signup = async (req, res, next) => {
   try {
@@ -48,7 +45,9 @@ export const signin = async (req, res, next) => {
       sameSite: true,
     });
 
-    const loggedUser = { token, id: user._id, email, name: user.name };
+    const loggedUser = {
+      token, id: user._id, email, name: user.name,
+    };
 
     res.send({ data: loggedUser });
   } catch (err) {
