@@ -12,7 +12,7 @@ import { BadRequestError } from '../errors/BadRequestError.js';
 
 export const signup = async (req, res, next) => {
   try {
-    const { name = undefined, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     const passwordHash = await bcrypt.hash(password, 10);
 
