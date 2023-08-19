@@ -94,9 +94,9 @@ export const updateUserInfo = async (req, res, next) => {
   }
 };
 
-export const logout = async (req, res, next) => {
+export const signout = async (req, res, next) => {
   try {
-    res.clearCookie();
+    res.clearCookie('token');
     res.send({ data: 'Польщователь успешно разлогинен!' });
   } catch (err) {
     next(err);

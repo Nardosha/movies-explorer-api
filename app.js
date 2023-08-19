@@ -12,6 +12,7 @@ import { PORT, DB_CONNECTION } from './config.js';
 import { NOT_FOUND_PAGE_ERROR_TEXT } from './utils/constants.js';
 import { validateSignin, validateSignup } from './utils/validators.js';
 import { errorLogger, requestLogger } from './moddlewares/logger.js';
+import { auth } from './moddlewares/auth.js';
 
 const app = express();
 
@@ -25,7 +26,7 @@ app.use('/signin', validateSignin, signin);
 app.use('/users', userRouter);
 app.use('/movies', movieRouter);
 
-app.use('*', (req, res, next) => {
+app.use('*', auth, (req, res, next) => {
   next(new NotFoundError(NOT_FOUND_PAGE_ERROR_TEXT));
 });
 
