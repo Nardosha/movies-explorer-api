@@ -7,11 +7,6 @@ export const auth = async (req, res, next) => {
   try {
     const token = req.cookies?.token;
 
-    if (!token) {
-      next(new UnauthorizedError(UNAUTHORIZED_ERROR_TEXT))
-      return
-    }
-
     req.user = await jwt.verify(token, JWT_SECRET);
     next();
   } catch (err) {
