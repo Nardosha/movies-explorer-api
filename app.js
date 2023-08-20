@@ -12,15 +12,17 @@ import { errorLogger, requestLogger } from './moddlewares/logger.js';
 
 const app = express();
 
+app.use(bodyParser.json());
+
+app.use(cookieParser());
+
+app.use(requestLogger);
+
 app.use(limiter)
 
 app.use(helmet());
 
-app.use(bodyParser.json());
-app.use(cookieParser());
-
 mongoose.connect(DB_CONNECTION);
-app.use(requestLogger);
 
 app.use(router);
 

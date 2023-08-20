@@ -7,6 +7,5 @@ const userRouter = express.Router();
 
 userRouter.get('/me', auth, getUserInfo);
 userRouter.patch('/me', validateUserData, auth, updateUserInfo);
-userRouter.delete('/signout', auth, signout);
 
 export default userRouter;

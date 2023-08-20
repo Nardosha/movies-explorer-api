@@ -46,6 +46,6 @@ export const validateMovieFields = celebrate({
 
 export const validateMovieId = celebrate({
   params: Joi.object().keys({
-    id: Joi.number().required()
+    id: Joi.string().length(24).hex().required(),
   })
 });

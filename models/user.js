@@ -7,6 +7,7 @@ import {
   INVALID_EMAIL_ERR_TEXT,
   REQUIRED_EMAIL_ERR_TEXT,
   REQUIRED_PASSWORD_ERR_TEXT,
+  REQUIRED_NAME_ERR_TEXT
 } from '../utils/constants.js';
 import { UnauthorizedError } from '../errors/UnauthorizedError.js';
 
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     minLength: 2,
     maxLength: 30,
+    required: [true, REQUIRED_NAME_ERR_TEXT],
   },
 
   email: {

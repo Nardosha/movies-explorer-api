@@ -1,7 +1,7 @@
 import express from 'express';
 import userRouter from './userRoutes.js';
 import movieRouter from './movieRoutes.js';
-import { signin, signup } from '../controllers/userControllers.js';
+import { signin, signout, signup } from '../controllers/userControllers.js';
 import { auth } from '../moddlewares/auth.js';
 import { validateSignin, validateSignup } from '../utils/validators.js';
 import { NotFoundError } from '../errors/NotFoundError.js';
@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.use('/signup', validateSignup, signup);
 router.use('/signin', validateSignin, signin);
+router.delete('/signout', auth, signout);
 router.use('/users', userRouter)
 router.use('/movies', movieRouter)
 

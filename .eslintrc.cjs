@@ -32,6 +32,5 @@ module.exports = {
     'import/extensions': 0,
     quotes: [1, 'single', { avoidEscape: true }],
     'object-curly-newline': 0,
-    'object-curly-spacing': 1,
   },
 };

@@ -2,6 +2,7 @@ export const INVALID_EMAIL_ERR_TEXT = 'Необходимо ввести кор�
 export const INVALID_URL_ERR_TEXT = 'Некорректный адрес изображения';
 export const REQUIRED_EMAIL_ERR_TEXT = 'Введите почту';
 export const REQUIRED_PASSWORD_ERR_TEXT = 'Введите почту';
+export const REQUIRED_NAME_ERR_TEXT = 'Заполните имя';
 
 export const MIN_LENGTH_ERROR_TEXT = 'Минимум 2 символа';
 export const MAX_LENGTH_ERROR_TEXT = 'Максиму 30 символа';
