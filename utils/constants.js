@@ -7,7 +7,6 @@ export const REQUIRED_NAME_ERR_TEXT = 'Заполните имя';
 export const MIN_LENGTH_ERROR_TEXT = 'Минимум 2 символа';
 export const MAX_LENGTH_ERROR_TEXT = 'Максиму 30 символа';
 
-
 export const BAD_REQUEST_ERROR_CODE = 400;
 
 export const UNAUTHORIZED_ERROR_CODE = 401;

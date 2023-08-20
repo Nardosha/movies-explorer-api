@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUserInfo, signout, updateUserInfo } from '../controllers/userControllers.js';
+import { getUserInfo, updateUserInfo } from '../controllers/userControllers.js';
 import { auth } from '../moddlewares/auth.js';
 import { validateUserData } from '../utils/validators.js';
 

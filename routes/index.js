@@ -12,15 +12,11 @@ const router = express.Router();
 router.use('/signup', validateSignup, signup);
 router.use('/signin', validateSignin, signin);
 router.delete('/signout', auth, signout);
-router.use('/users', userRouter)
-router.use('/movies', movieRouter)
+router.use('/users', userRouter);
+router.use('/movies', movieRouter);
 
 router.use('*', auth, (req, res, next) => {
   next(new NotFoundError(NOT_FOUND_PAGE_ERROR_TEXT));
 });
 
 export default router;
-
-
-
-

@@ -8,7 +8,7 @@ export const validateSignup = celebrate({
       email: Joi.string().required().email(),
       password: Joi.string().required(),
       name: Joi.string().min(2).max(30).required(),
-    })
+    }),
 });
 
 export const validateSignin = celebrate({
@@ -16,7 +16,7 @@ export const validateSignin = celebrate({
     .keys({
       email: Joi.string().required().email(),
       password: Joi.string().required(),
-    })
+    }),
 });
 
 export const validateUserData = celebrate({
@@ -24,7 +24,7 @@ export const validateUserData = celebrate({
     .keys({
       name: Joi.string().min(2).max(30),
       email: Joi.string().email(),
-    })
+    }),
 });
 
 export const validateMovieFields = celebrate({
@@ -41,11 +41,11 @@ export const validateMovieFields = celebrate({
       movieId: Joi.number().required(),
       nameRU: Joi.string().required(),
       nameEN: Joi.string().required(),
-    })
+    }),
 });
 
 export const validateMovieId = celebrate({
   params: Joi.object().keys({
     id: Joi.string().length(24).hex().required(),
-  })
+  }),
 });

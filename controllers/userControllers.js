@@ -28,7 +28,7 @@ export const signup = async (req, res, next) => {
     }
 
     if (err.name === 'ValidationError') {
-      const errorMessage = Object.values(err.errors).map(error => error.message).join(', ')
+      const errorMessage = Object.values(err.errors).map((error) => error.message).join(', ');
       next(new BadRequestError(errorMessage));
       return;
     }
@@ -98,7 +98,7 @@ export const updateUserInfo = async (req, res, next) => {
     }
 
     if (err.name === 'ValidationError') {
-      const errorMessage = Object.values(err.errors).map(error => error.message).join(', ')
+      const errorMessage = Object.values(err.errors).map((error) => error.message).join(', ');
       next(new BadRequestError(errorMessage));
       return;
     }

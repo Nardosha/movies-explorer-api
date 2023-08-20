@@ -1,11 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import helmet from "helmet";
-import router from './routes/index.js';
-import limiter from './moddlewares/limiter.js';
+import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
+import router from './routes/index.js';
+import limiter from './moddlewares/limiter.js';
 import { errorHandler } from './moddlewares/errorHandler.js';
 import { PORT, DB_CONNECTION } from './config.js';
 import { errorLogger, requestLogger } from './moddlewares/logger.js';
@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
-app.use(limiter)
+app.use(limiter);
 
 app.use(helmet());
 

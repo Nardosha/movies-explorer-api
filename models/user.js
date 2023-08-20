@@ -7,7 +7,7 @@ import {
   INVALID_EMAIL_ERR_TEXT,
   REQUIRED_EMAIL_ERR_TEXT,
   REQUIRED_PASSWORD_ERR_TEXT,
-  REQUIRED_NAME_ERR_TEXT
+  REQUIRED_NAME_ERR_TEXT,
 } from '../utils/constants.js';
 import { UnauthorizedError } from '../errors/UnauthorizedError.js';
 
